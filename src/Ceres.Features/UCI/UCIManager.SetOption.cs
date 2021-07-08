@@ -128,6 +128,16 @@ namespace Ceres.Features.UCI
     /// </summary>
     float fpuAtRoot = new ParamsSelect().FPUValueAtRoot;
 
+    /// <summary>
+    /// Move selection Q power.
+    /// </summary>
+    float qPower = new ParamsSelect().QPower;
+
+    /// <summary>
+    /// Minimum N fraction for move selection
+    /// </summary>
+    float minNFrac = new ParamsSelect().MinNFrac;
+
 
     void ProcessSetOption(string command)
     {
@@ -270,6 +280,16 @@ namespace Ceres.Features.UCI
         case "fpuatroot":
           SetFloat(value, 0, float.MaxValue, ref fpuAtRoot);
           break;
+
+        case "qpower":
+          SetFloat(value, 0, float.MaxValue, ref (CeresEngine is not null ? ref CeresEngine.ChildSelectParams.QPower : ref qPower));
+          //SetFloat(value, 0, float.MaxValue, ref qPower);
+          break;
+
+        case "minnfrac":
+          SetFloat(value, 0, float.MaxValue, ref (CeresEngine is not null ? ref CeresEngine.ChildSelectParams.MinNFrac : ref minNFrac));
+          //SetFloat(value, 0, float.MaxValue, ref minNFrac);
+          break;
       }
     }
 
@@ -378,6 +398,8 @@ option name PolicyTemperature type string default {new ParamsSelect().PolicySoft
 option name FPU type string default {new ParamsSelect().FPUValue}
 option name FPUAtRoot type string default {new ParamsSelect().FPUValueAtRoot}
 option name SearchLimitMultiplier type string default 1.00
+option name QPower type string default {new ParamsSelect().QPower}
+option name MinNFrac type string default {new ParamsSelect().MinNFrac}
 
 ";
     /*

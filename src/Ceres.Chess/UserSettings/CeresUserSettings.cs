@@ -136,6 +136,8 @@ namespace Ceres.Chess.UserSettings
     public float? PolicyTemperature { get; set; }
     public float? FPU { get; set; }
     public float? FPUAtRoot { get; set; }
+    public float? QPower { get; set; }
+    public float? MinNFrac { get; set; }
 
     #region Tablebases
 

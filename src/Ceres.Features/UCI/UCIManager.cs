@@ -191,6 +191,8 @@ namespace Ceres.Features.UCI
         parms.PolicySoftmax = policySoftmax;
         parms.FPUValue = fpu;
         parms.FPUValueAtRoot = fpuAtRoot;
+        parms.QPower = qPower;
+        parms.MinNFrac = minNFrac;
 
         return parms;
       }

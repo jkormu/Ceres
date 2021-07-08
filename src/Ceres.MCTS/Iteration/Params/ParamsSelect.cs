@@ -90,6 +90,12 @@ namespace Ceres.MCTS.Params
     [CeresOption(Name = "policy-decay-exponent", Desc = "Exponent used in scaling factor (applied to N) used in node selection to shrink policy toward uniform as N grows. Zero to disable, typical value 0.38", Default = "0")]
     public float PolicyDecayExponent = 0.38f;
 
+    [CeresOption(Name = "q-power", Desc = "tune", Default = "20")]
+    public float QPower = 20.0f;
+
+    [CeresOption(Name = "min-n-frac", Desc = "tune", Default = "0.325")]
+    public float MinNFrac = 0.325f;
+
     /// <summary>
     /// Amount of relative virtual loss to apply in leaf selection to discourage collisions.
     /// Values closer to zero yield less distortion in choosing leafes (thus higher quality play)
@@ -153,6 +159,8 @@ namespace Ceres.MCTS.Params
       MaybeSet(CeresUserSettingsManager.Settings.PolicyTemperature, ref PolicySoftmax);
       MaybeSet(CeresUserSettingsManager.Settings.FPU, ref FPUValue);
       MaybeSet(CeresUserSettingsManager.Settings.FPUAtRoot, ref FPUValueAtRoot);
+      MaybeSet(CeresUserSettingsManager.Settings.QPower, ref QPower);
+      MaybeSet(CeresUserSettingsManager.Settings.MinNFrac, ref MinNFrac);
     }
 
 

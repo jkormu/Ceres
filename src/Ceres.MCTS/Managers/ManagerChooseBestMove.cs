@@ -359,13 +359,14 @@ namespace Ceres.MCTS.Managers
 
       // Compute fraction required which decreases slowly below 1.0
       // as the Q difference increases (using a power function).
-      const float POWER = 20f;
-      float minFrac = MathF.Pow(1.0f - qDifferenceFromBestQ, POWER);
+      float minFrac = MathF.Pow(1.0f - qDifferenceFromBestQ, node.Context.ParamsSelect.QPower);
+      Console.WriteLine(node.Context.ParamsSelect.QPower.ToString());
+      Console.WriteLine(node.Context.ParamsSelect.MinNFrac.ToString());
 
       // Impose absolute minimum fraction.
-      if (minFrac < MIN_FRAC_N_REQUIRED_MIN)
+      if (minFrac < node.Context.ParamsSelect.MinNFrac)
       {
-        minFrac = MIN_FRAC_N_REQUIRED_MIN;
+        minFrac = node.Context.ParamsSelect.MinNFrac;
       }
 
       return minFrac;
